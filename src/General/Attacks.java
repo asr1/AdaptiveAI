@@ -68,11 +68,7 @@ public abstract class Attacks implements Comparable<Attacks>{
 	
 	public boolean getHardCap() {
 		// Check for energy cap - do they have enough energy
-		if (theAttacker.currentEnergy < cost) {
-			return false;
-		}
-		
-		return true;
+		return (theAttacker.currentEnergy > cost);
 	}
 	
 	public boolean getSoftCap() {

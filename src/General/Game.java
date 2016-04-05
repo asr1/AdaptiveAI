@@ -73,9 +73,8 @@ public class Game {
 			printString(attack.theAttacker, string);
 			attack.theTargets.clear();
 			boardManager.updateBoard();
-			checkForGameOver();
 			roundAttacks.remove(0);
-			if (gameOver) updateGameOver();
+			if (checkForGameOver()) updateGameOver();
 		} else {
 			updateAfterRound();
 			roundInProgress = false;
@@ -89,8 +88,8 @@ public class Game {
 		for (Attacks attack : roundAttacks) {
 			attack.executeAttack();
 			attack.theTargets.clear();
-			checkForGameOver();
-			if (gameOver) {
+			if(checkForGameOver())
+			{
 				return;
 			}
 		}
@@ -164,7 +163,8 @@ public class Game {
 		boardManager.gameOverUpdate("Game Over: " + winningTeam.toString() + " wins.");
 	}
 	
-	private void checkForGameOver() {
+	//Returns true if a game is over, false otherwise.
+	private boolean checkForGameOver() {
 		boolean team1Wins = true;
 		boolean team2Wins = true;
 		for (Class p : players) {
@@ -187,6 +187,7 @@ public class Game {
 		if (team1Wins && team2Wins) {
 			winningTeam = Team.TIE_GAME;
 		} 
+		return gameOver;
 	}
 	
 	private void orderAttacks() {
