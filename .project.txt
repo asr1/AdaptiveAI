@@ -1,0 +1,6 @@
+/Abilities/		
+/BasicAttacks/		
+/Classes/		
+/General/		
+/UI/		
+/WeightTemplates/
